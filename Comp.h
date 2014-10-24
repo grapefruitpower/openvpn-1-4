@@ -8,7 +8,6 @@
 
 #include <string.h>
 #include <iostream>
-#define CREATECONFIG_H
 
 using namespace std;
 
