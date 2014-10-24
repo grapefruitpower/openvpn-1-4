@@ -64,7 +64,10 @@ class CreateConfig {
 				ofstream config(destFile.c_str());
  	                        string out = endSym.substr(copyPosBegin,copyPosEnd);
 				sFile.close();
-        	                config << out;
+        	                config << out << endl;
+				config << "ca ca.crt" << endl;
+				config << "cert client.crt" << endl;
+				config << "key client.key" << endl;
 				config.close();
 				
 				return true;

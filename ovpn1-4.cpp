@@ -34,7 +34,7 @@ void action(string source, string strA, string strB, string dest) {
 	string fileName;
 	if (strA == "<ca>") {
 		fileName = "ca.crt";
-	} else if (strA == "<client>") {
+	} else if (strA == "<cert>") {
 		fileName = "client.crt";
 	} else {
 		fileName = "client.key";
@@ -73,13 +73,22 @@ int main(int argc, char *argv[]) {
 	} else if (p == 3) {
 		string ca 	= "<ca>";
 		string eca 	= "</ca>";
-		string client 	= "<client>";
-		string eclient 	= "</client>";
+		string client 	= "<cert>";
+		string eclient 	= "</cert>";
 		string key	= "<key>";
 		string ekey 	= "</key>";
 
 		string src 	= argv[1];
 		string dest 	= argv[2];
+	
+		// check if destination has / <- as last character
+	/*	if (dest.at(dest.length()) == "/")  {
+			cout << "/ is set" << endl;
+		} else {
+			dest.append("/");
+			cout << "append on dest /" << endl;
+		}*/
+		
 		action (src, ca, eca, dest);
 		action (src, client,eclient, dest);
 		action (src, key,ekey, dest);
