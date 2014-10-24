@@ -83,6 +83,11 @@ int main(int argc, char *argv[]) {
 		action (src, ca, eca, dest);
 		action (src, client,eclient, dest);
 		action (src, key,ekey, dest);
+		
+		CreateConfig cc;
+		cc.setData(src, dest);
+		cc.createFile();
+		cc.getEndPosAndCopy();
 	}
 return 0;
 

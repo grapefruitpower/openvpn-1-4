@@ -24,13 +24,15 @@ class CreateConfig {
 		void setData(string source, string dest) {
 			sourceFile = source;
 			destFile = dest;
+			copyPosBegin = 0;
 		}
 		string getSource() {
 			return sourceFile;
 		}
 		/* create the config File and return FALSE when its not */
 		bool createFile () {
-			ofstream config (destFile.append("client.cfg").c_str());
+			destFile.append("client.cfg");
+			ofstream config (destFile.c_str());
 			config << "#Config by strcon\n";
 			config.close();
 			
