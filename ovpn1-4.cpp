@@ -16,21 +16,24 @@
 using namespace std;
 	
 void action(string source, string strA, string strB, string dest) {
-	cout << strA << endl;
-	cout << strB << endl;
-	cout << dest << endl;
 	ifstream file(source.c_str());
         string str((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-
-        /* find strA and strB */
-        size_t foundA = str.find(strA);
-        size_t foundB = str.find(strB);
-
-        int lastPosFromA = foundA + sizeof(strA);
-
-        // length du cut
-        int cutLength = foundB - lastPosFromA;
+	file.close();
 	
+	/*
+	* get string length for content
+	*/
+	int strLength = str.length();
+	
+	
+        /* find strA and strB */
+       	int aLength = str.find(strA);
+        int bLength = str.find(strB);
+	
+	// start point
+	aLength = aLength + strA.length();
+	bLength = bLength - aLength;
+
 	string fileName;
 	if (strA == "<ca>") {
 		fileName = "ca.crt";
@@ -41,7 +44,7 @@ void action(string source, string strA, string strB, string dest) {
 	}
 
         ofstream ofs (dest.append(fileName).c_str());
-        string output = str.substr(foundA+sizeof(strA),cutLength);
+        string output = str.substr(aLength,bLength);
         ofs << output;
         ofs.close();
 }
