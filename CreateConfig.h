@@ -31,7 +31,7 @@ class CreateConfig {
 		}
 		/* create the config File and return FALSE when its not */
 		bool createFile () {
-			destFile.append("client.cfg");
+			destFile.append("client.ovpn");
 			ofstream config (destFile.c_str());
 			config << "#Config by strcon\n";
 			config.close();
